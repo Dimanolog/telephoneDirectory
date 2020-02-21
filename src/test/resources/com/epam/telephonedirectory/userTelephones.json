@@ -1,0 +1,22 @@
+[
+  {
+    "firstName": "Dima",
+    "lastName": "Pupkov",
+    "telephoneNumber": {
+      "telephoneNumber": 14235345345,
+      "telephoneCompany": {
+        "name": "MTC"
+      }
+    }
+  },
+  {
+    "firstName": "Vanya",
+    "lastName": "Ivanov",
+    "telephoneNumber": {
+      "telephoneNumber": 123123421,
+      "telephoneCompany": {
+        "name": "Velcome"
+      }
+    }
+  }
+]
