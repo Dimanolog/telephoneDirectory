@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
+import java.util.List;
 
 @Service
 public class UserService implements IUserService {
@@ -30,12 +31,12 @@ public class UserService implements IUserService {
             User[] user = objectMapper.readValue(inputStream, User[].class);
             userRepository.saveAll(Arrays.asList(user));
         } catch (IOException e) {
-            throw new BusinesException("message", e);
+            throw new BusinesException("upload file error", e);
         }
     }
 
     @Override
-    public Iterable<User> getAllUsers() {
+    public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 }
