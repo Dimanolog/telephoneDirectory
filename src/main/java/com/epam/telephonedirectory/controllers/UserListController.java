@@ -30,7 +30,7 @@ public class UserListController {
 
     @GetMapping
     ModelAndView userList(HttpServletRequest request,
-                             HttpServletResponse response) throws Exception {
+                          HttpServletResponse response) throws Exception {
 
         List<User> allUsers = userService.getAllUsers();
 
@@ -43,11 +43,11 @@ public class UserListController {
     @PostMapping("/uploadUserFile")
     public String handleFileUpload(@RequestParam("file") MultipartFile file,
                                    RedirectAttributes redirectAttributes) {
-
-        userService.saveUserFromFile(file);
+        if (file != null) {
+            userService.saveUserFromFile(file);
+        }
 
         return "redirect:/userList/";
-
     }
 
     @GetMapping(value = "/userPdf")
@@ -58,7 +58,7 @@ public class UserListController {
 
         Iterable<User> allUsers = userService.getAllUsers();
 
-        ModelAndView modelAndView = new ModelAndView("userPdf", USERS_KEY , allUsers);
+        ModelAndView modelAndView = new ModelAndView("userPdf", USERS_KEY, allUsers);
 
         return modelAndView;
     }
