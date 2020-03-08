@@ -1,0 +1,28 @@
+[
+  {
+    "firstName": "Dima",
+    "lastName": "Pupkov",
+    "login": "admin",
+    "userPassword": "password",
+    "userRole" : "BOOKING_MANAGER",
+    "telephoneNumber": {
+      "telephoneNumber": 14235345345,
+      "telephoneCompany": {
+        "name": "MTC"
+      }
+    }
+  },
+  {
+    "firstName": "Vanya",
+    "lastName": "Ivanov",
+    "login" : "user",
+    "userPassword": "password",
+    "userRole" : "REGISTERED_USER",
+    "telephoneNumber": {
+      "telephoneNumber": 123123421,
+      "telephoneCompany": {
+        "name": "Velcome"
+      }
+    }
+  }
+]
