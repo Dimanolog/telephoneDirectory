@@ -36,6 +36,6 @@ public class MvcConfigurer implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/webapp/WEB-INF/login.html");
+        registry.addViewController("/login");
     }
 }

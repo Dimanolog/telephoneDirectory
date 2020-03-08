@@ -4,7 +4,7 @@
 
 
 <div id="content">
-
+    <#include "logout.ftl">
     <table class="userTable">
         <tr>
             <th>User</th>
