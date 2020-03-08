@@ -3,6 +3,7 @@
     "firstName": "Dima",
     "lastName": "Pupkov",
     "userPassword": "password",
+    "login" : "admin",
     "userRole" : "BOOKING_MANAGER",
     "telephoneNumber": {
       "telephoneNumber": 14235345345,
@@ -14,8 +15,9 @@
   {
     "firstName": "Vanya",
     "lastName": "Ivanov",
+    "login" : "user",
     "userPassword": "password",
-    "userRole" : "RESGISTERED_USER",
+    "userRole" : "REGISTERED_USER",
     "telephoneNumber": {
       "telephoneNumber": 123123421,
       "telephoneCompany": {

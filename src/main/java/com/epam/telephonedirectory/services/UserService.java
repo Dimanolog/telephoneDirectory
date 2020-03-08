@@ -1,10 +1,16 @@
 package com.epam.telephonedirectory.services;
 
 import com.epam.telephonedirectory.entities.User;
+import com.epam.telephonedirectory.entities.UserRole;
 import com.epam.telephonedirectory.exceptions.BusinesException;
 import com.epam.telephonedirectory.repository.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PostFilter;
+import org.springframework.security.access.prepost.PreFilter;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -17,6 +23,9 @@ import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
+
+import static com.epam.telephonedirectory.entities.UserRole.REGISTERED_USER;
 
 @Service
 public class UserService implements IUserService, UserDetailsService {
@@ -31,13 +40,23 @@ public class UserService implements IUserService, UserDetailsService {
     }
 
     @Override
+    @Secured("BOOKING_MANAGER")
     public void saveUserFromFile(MultipartFile multipartFile) {
         try(InputStream inputStream = multipartFile.getInputStream()) {
             List<User> userList = Arrays.asList(objectMapper.readValue(inputStream, User[].class));
+            setDefaultRole(userList);
             userRepository.saveAll(userList);
             encodeUserPassword(userList);
         } catch (IOException e) {
             throw new BusinesException("upload file error", e);
+        }
+    }
+
+    private void setDefaultRole(List<User> userList) {
+        for (User user : userList) {
+           if(user.getUserRole() == null){
+               user.setUserRole(REGISTERED_USER);
+           }
         }
     }
 
@@ -46,6 +65,7 @@ public class UserService implements IUserService, UserDetailsService {
 
         try(InputStream is = inputStream) {
             List<User> userList = Arrays.asList(objectMapper.readValue(is, User[].class));
+            setDefaultRole(userList);
             encodeUserPassword(userList);
             userRepository.saveAll(userList);
         } catch (IOException e) {
@@ -60,6 +80,7 @@ public class UserService implements IUserService, UserDetailsService {
     }
 
     @Override
+    @PostFilter("hasRole('BOOKING_MANAGER') or filterObject.login == authentication.name")
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }

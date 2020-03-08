@@ -2,8 +2,8 @@
   {
     "firstName": "Dima",
     "lastName": "Pupkov",
-    "login": "admin",
     "userPassword": "password",
+    "login" : "admin",
     "userRole" : "BOOKING_MANAGER",
     "telephoneNumber": {
       "telephoneNumber": 14235345345,
