@@ -12,6 +12,7 @@ import org.springframework.web.servlet.view.document.AbstractPdfView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 import java.util.Map;
 
 @Component("userPdf")
@@ -31,7 +32,7 @@ public class UserPdfView extends AbstractPdfView {
 
 
         for (User user : users) {
-            TelephoneNumber telephoneNumber = user.getTelephoneNumber();
+            List<TelephoneNumber> telephoneNumbers = user.getTelephoneNumbers();
 
             String userData = new StringBuilder()
                     .append("User: ")

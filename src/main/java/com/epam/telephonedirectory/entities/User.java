@@ -1,10 +1,10 @@
 package com.epam.telephonedirectory.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class User extends AbstractEntity {
-
     @Column
     private String login;
     @Column
@@ -14,20 +14,12 @@ public class User extends AbstractEntity {
     @Column
     private String userPassword;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private List<TelephoneNumber> telephoneNumbers;
+
     @Enumerated(EnumType.ORDINAL)
     private UserRole userRole;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="telephone_number_id")
-    private TelephoneNumber telephoneNumber;
-
-    public TelephoneNumber getTelephoneNumber() {
-        return telephoneNumber;
-    }
-
-    public void setTelephoneNumber(TelephoneNumber telephoneNumber) {
-        this.telephoneNumber = telephoneNumber;
-    }
 
     public String getLastName() {
         return lastName;
@@ -67,5 +59,13 @@ public class User extends AbstractEntity {
 
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    public List<TelephoneNumber> getTelephoneNumbers() {
+        return telephoneNumbers;
+    }
+
+    public void setTelephoneNumbers(List<TelephoneNumber> telephoneNumbers) {
+        this.telephoneNumbers = telephoneNumbers;
     }
 }

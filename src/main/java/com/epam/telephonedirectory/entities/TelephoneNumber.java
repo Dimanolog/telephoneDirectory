@@ -11,6 +11,9 @@ public class TelephoneNumber extends AbstractEntity {
     @JoinColumn(name="telephone_company_id")
     private TelephoneCompany telephoneCompany;
 
+    @ManyToOne
+    private User user;
+
     public TelephoneCompany getTelephoneCompany() {
         return telephoneCompany;
     }
@@ -25,5 +28,13 @@ public class TelephoneNumber extends AbstractEntity {
 
     public void setTelephoneNumber(Long telephoneNumber) {
         this.telephoneNumber = telephoneNumber;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
