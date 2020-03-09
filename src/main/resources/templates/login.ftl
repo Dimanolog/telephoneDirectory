@@ -1,5 +1,5 @@
-html>
-<head></head>
+<html lang="ru">
+
 
 <body>
 <h1>Login</h1>
@@ -12,14 +12,14 @@ html>
         </tr>
         <tr>
             <td>Password:</td>
-            <td><input type='password' name='password' /></td>
+            <td><input type='password' name='password'/></td>
         </tr>
         <tr>
             <td>Remember Me:</td>
-            <td><input type="checkbox" name="remember-me" /></td>
+            <td><input type="checkbox" name="remember-me"/></td>
         </tr>
         <tr>
-            <td><input name="submit" type="submit" value="submit" /></td>
+            <td><input name="submit" type="submit" value="submit"/></td>
         </tr>
     </table>
 </form>

@@ -1,16 +1,12 @@
 package com.epam.telephonedirectory.services;
 
 import com.epam.telephonedirectory.entities.User;
-import com.epam.telephonedirectory.entities.UserRole;
 import com.epam.telephonedirectory.exceptions.BusinesException;
 import com.epam.telephonedirectory.repository.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PostFilter;
-import org.springframework.security.access.prepost.PreFilter;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -23,7 +19,6 @@ import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 
 import static com.epam.telephonedirectory.entities.UserRole.REGISTERED_USER;
 
@@ -73,14 +68,14 @@ public class UserService implements IUserService, UserDetailsService {
         }
     }
 
-    private void encodeUserPassword(Collection<? extends User> userList) {
+    private void encodeUserPassword(Collection<User> userList) {
         for (User user : userList) {
             user.setUserPassword(passwordEncoder.encode(user.getUserPassword()));
         }
     }
 
     @Override
-    @PostFilter("hasRole('BOOKING_MANAGER') or filterObject.login == authentication.name")
+    @PostFilter("hasAuthority('BOOKING_MANAGER') or filterObject.login == authentication.name")
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
