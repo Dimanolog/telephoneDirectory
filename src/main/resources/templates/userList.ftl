@@ -13,9 +13,16 @@
         </tr>
             <#list userList as user>
                 <tr>
-                    <td>${user.firstName + " " + user.lastName}</td>
-                    <td>${user.telephoneNumber.telephoneNumber}</td>
-                    <td>${user.telephoneNumber.telephoneCompany.name}</td>
+                <td>${user.firstName + " " + user.lastName}</td>
+
+                <#list user.telephoneNumbers as item>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td rowspan="${user.telephoneNumbers ? size}">${item.telephoneNumber}</td>
+                        <td rowspan="${user.telephoneNumbers ? size}">${item.telephoneCompany.name}</td>
+                    <tr/>
+                </#list>
                 </tr>
             </#list>
     </table>

@@ -34,18 +34,21 @@ public class UserPdfView extends AbstractPdfView {
         for (User user : users) {
             List<TelephoneNumber> telephoneNumbers = user.getTelephoneNumbers();
 
-            String userData = new StringBuilder()
+            StringBuilder userDataSb = new StringBuilder()
                     .append("User: ")
                     .append(user.getFirstName())
-                    .append(" ")
+                    .append("\n")
                     .append(user.getLastName())
-                    .append(" telephone number: ")
-                    .append(telephoneNumber.getTelephoneNumber())
-                    .append(" ")
-                    .append(telephoneNumber.getTelephoneCompany().getName())
-                    .toString();
+                    .append(" telephone numbers:\n");
 
-            Paragraph userPararaph = new Paragraph(new Chunk(userData,
+            for (TelephoneNumber telephoneNumber : telephoneNumbers) {
+                userDataSb.append(telephoneNumber.getTelephoneNumber())
+                        .append(" ")
+                        .append(telephoneNumber.getTelephoneCompany().getName())
+                        .append("\n");
+            }
+
+            Paragraph userPararaph = new Paragraph(new Chunk(userDataSb.toString(),
                     FontFactory.getFont(FontFactory.COURIER, 14)));
 
             document.add(userPararaph);

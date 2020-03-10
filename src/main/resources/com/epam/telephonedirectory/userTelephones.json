@@ -26,6 +26,12 @@
         "telephoneCompany": {
           "name": "Velcome"
         }
+      },
+      {
+        "telephoneNumber": 3758803542,
+        "telephoneCompany": {
+          "name": "MTC"
+        }
       }
     ]
   }
