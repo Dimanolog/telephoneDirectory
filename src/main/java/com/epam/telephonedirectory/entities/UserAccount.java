@@ -10,10 +10,6 @@ public class UserAccount extends AbstractEntity{
     private  BigDecimal money;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="telephone_number_id")
-    private TelephoneNumber telephoneNumber;
-    
-    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
@@ -25,11 +21,11 @@ public class UserAccount extends AbstractEntity{
         this.money = money;
     }
 
-    public TelephoneNumber getTelephoneNumber() {
-        return telephoneNumber;
+    public User getUser() {
+        return user;
     }
 
-    public void setTelephoneNumber(TelephoneNumber telephoneNumber) {
-        this.telephoneNumber = telephoneNumber;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

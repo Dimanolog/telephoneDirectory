@@ -27,8 +27,10 @@ CREATE TABLE IF NOT EXISTS TELEPHONE_NUMBER (
 CREATE TABLE IF NOT EXISTS USER_ACCOUNT (
   id BIGINT AUTO_INCREMENT,
   money DECIMAL,
-  telephone_number_id BIGINT,
+  user_id BIGINT,
   primary key(id),
-  foreign key (telephone_number_id) references TELEPHONE_NUMBER(id)
+  foreign key (user_id) references users(id)
 );
+
+insert into users values (1,'superAdmin', 'superAdmin', 'superAdmin', '$2a$10$VsH99.9rnhSRhr7JwNLbZOqKLaoQ5Bg7UD65VyrPxAGkxYjNp9lG6', 1);
 

@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 
 @Service
-public class TelepnoneNumberService implements ITelepnoneCompanyService {
+public class TelepnoneNumberService implements ITelephoneNumberService {
 
     private IUserAccountService userAccountService;
     private TelephoneNumberRepository telephoneNumberRepository;

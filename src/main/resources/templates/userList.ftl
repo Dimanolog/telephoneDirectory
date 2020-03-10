@@ -13,17 +13,17 @@
         </tr>
             <#list userList as user>
                 <tr>
-                <td>${user.firstName + " " + user.lastName}</td>
+                    <td>${user.firstName + " " + user.lastName}</td>
+                </tr>
 
                 <#list user.telephoneNumbers as item>
                     <tr>
                         <td></td>
                         <td></td>
-                        <td rowspan="${user.telephoneNumbers ? size}">${item.telephoneNumber}</td>
-                        <td rowspan="${user.telephoneNumbers ? size}">${item.telephoneCompany.name}</td>
+                        <td>${item.telephoneNumber}</td>
+                        <td>${item.telephoneCompany.name}</td>
                     <tr/>
                 </#list>
-                </tr>
             </#list>
     </table>
 
@@ -39,5 +39,7 @@
     <form method="get" action="/userList/userPdf">
         <button type="submit">Download user pdf</button>
     </form>
+    
+    
 
 </div>

@@ -22,6 +22,22 @@ public class UserAccountService implements IUserAccountService {
 
     @Override
     @Transactional
+    public void createUserAccount(User user, BigDecimal money) {
+
+        boolean accountExist = userAccountRepository.existsByUser(user);
+
+        if (accountExist) {
+            throw new BusinesException("user already have account");
+        }
+
+        UserAccount userAccount = new UserAccount();
+        userAccount.setMoney(money);
+        userAccount.setUser(user);
+        userAccountRepository.save(userAccount);
+    }
+
+    @Override
+    @Transactional
     public void payMoney(User user, BigDecimal amount) {
         UserAccount userAccount = userAccountRepository.findTopByUser(user);
 

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.FileInputStream;
@@ -25,6 +26,7 @@ public class UserControllerTest {
     private int port;
 
     @Test
+    @WithMockUser(username="superAdmin")
     public void saveUserFromFile() throws IOException {
         FileInputStream inputFile = new FileInputStream(this.getClass().getResource("userTelephones.json").getFile());
         MockMultipartFile jsonFile = new MockMultipartFile("userTelephones.json", "", "application/json", inputFile);
