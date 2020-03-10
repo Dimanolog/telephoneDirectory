@@ -5,24 +5,28 @@
     "userPassword": "password",
     "login" : "admin",
     "userRole" : "BOOKING_MANAGER",
-    "telephoneNumber": {
-      "telephoneNumber": 14235345345,
-      "telephoneCompany": {
-        "name": "MTC"
+    "telephoneNumbers": [
+      {
+        "telephoneNumber": 14235345345,
+        "telephoneCompany": {
+          "name": "MTC"
+        }
       }
-    }
+    ]
   },
   {
     "firstName": "Vanya",
     "lastName": "Ivanov",
-    "login" : "user",
+    "login": "user",
     "userPassword": "password",
-    "userRole" : "REGISTERED_USER",
-    "telephoneNumber": {
-      "telephoneNumber": 123123421,
-      "telephoneCompany": {
-        "name": "Velcome"
+    "userRole": "REGISTERED_USER",
+    "telephoneNumbers": [
+      {
+        "telephoneNumber": 123123421,
+        "telephoneCompany": {
+          "name": "Velcome"
+        }
       }
-    }
+    ]
   }
 ]
